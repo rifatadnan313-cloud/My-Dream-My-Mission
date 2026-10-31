@@ -1,0 +1,6 @@
+{
+  "name": "My Dream, My Mission",
+  "description": "A personal vision, goal tracker, and lifelong roadmap for scholarship, literature, Quran recitation, vocal artistry, teaching, and knowledge.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
