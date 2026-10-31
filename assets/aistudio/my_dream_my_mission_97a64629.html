@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123c32">
+<title>My Dream, My Mission</title>
+<style>
+:root{
+ --green:#123c32;--green2:#1b5143;--gold:#b99652;--gold-light:#e8d7ad;
+ --paper:#f7f6f1;--card:#fffefa;--ink:#202923;--muted:#69736c;
+ --line:#e6e2d7;--shadow:0 12px 34px rgba(23,45,35,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Georgia,"Noto Serif Bengali","Hind Siliguri",serif;line-height:1.75}
+button,input,textarea{font:inherit}
+a{color:inherit;text-decoration:none}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(18,60,50,.97);color:#fff;border-bottom:1px solid rgba(232,215,173,.35);backdrop-filter:blur(10px)}
+.nav{max-width:1180px;margin:auto;padding:12px 22px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-size:17px;letter-spacing:.04em;font-weight:700}
+.brand span{color:var(--gold-light)}
+.navlinks{display:flex;gap:16px;align-items:center;flex-wrap:wrap;font:13px Arial,sans-serif;color:#e8eee9}
+.navlinks a:hover{color:var(--gold-light)}
+.menu-btn{display:none;background:none;border:1px solid #789087;color:#fff;border-radius:8px;padding:5px 10px}
+.hero{background:linear-gradient(130deg,#0e3029,#174a3d 62%,#1d5948);color:#fff;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:440px;height:440px;border:1px solid rgba(232,215,173,.18);border-radius:50%;right:-140px;top:-180px;box-shadow:0 0 0 35px rgba(232,215,173,.035),0 0 0 75px rgba(232,215,173,.025)}
+.hero-inner{max-width:1180px;margin:auto;padding:82px 22px 74px;position:relative;z-index:1}
+.eyebrow{font:11px Arial,sans-serif;text-transform:uppercase;letter-spacing:.23em;color:var(--gold-light)}
+h1{font-size:clamp(38px,6vw,70px);line-height:1.12;margin:17px 0 14px;font-weight:500;letter-spacing:-.035em}
+.hero p{max-width:720px;color:#dce7e0;font-size:17px;margin:0 0 28px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{border:1px solid var(--gold);background:var(--gold);color:#172d25;padding:10px 18px;border-radius:4px;cursor:pointer;font:600 13px Arial,sans-serif}
+.btn.outline{background:transparent;color:#fff;border-color:#9cb0a6}
+.btn:hover{filter:brightness(1.07)}
+.wrap{max-width:1180px;margin:auto;padding:0 22px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-28px;position:relative;z-index:2}
+.stat{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:18px 20px;border-radius:5px}
+.stat strong{display:block;font-size:25px;color:var(--green);font-weight:600}
+.stat span{font:12px Arial,sans-serif;color:var(--muted)}
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:30px;padding-top:42px;padding-bottom:70px}
+.sidebar{position:sticky;top:76px;align-self:start;background:var(--card);border:1px solid var(--line);border-radius:5px;padding:20px;box-shadow:var(--shadow)}
+.side-title{font:11px Arial,sans-serif;color:var(--gold);letter-spacing:.18em;text-transform:uppercase;margin:0 0 12px}
+.side-link{display:block;padding:8px 10px;border-radius:4px;color:#45544b;font-size:14px;border-left:2px solid transparent}
+.side-link:hover,.side-link.active{background:#eef2ed;color:var(--green);border-left-color:var(--gold)}
+.side-note{margin-top:18px;padding-top:15px;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
+.content{min-width:0}
+.section{scroll-margin-top:88px;margin-bottom:26px;background:var(--card);border:1px solid var(--line);border-radius:5px;box-shadow:var(--shadow);overflow:hidden}
+.section-head{padding:24px 28px 18px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:15px}
+.section-kicker{font:10px Arial,sans-serif;letter-spacing:.2em;color:var(--gold);text-transform:uppercase}
+h2{font-size:25px;line-height:1.35;color:var(--green);margin:5px 0 0;font-weight:600}
+.section-body{padding:22px 28px 28px}
+.intro{color:#536057;margin:0 0 18px}
+.goal-list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.goal-item{display:grid;grid-template-columns:20px 1fr;gap:10px;align-items:start;padding:7px 0;border-bottom:1px dashed #e9e5dc}
+.goal-item:last-child{border:0}
+.goal-item input{appearance:none;width:17px;height:17px;border:1px solid #aeb8ae;border-radius:3px;margin:5px 0 0;cursor:pointer;position:relative;background:#fff}
+.goal-item input:checked{background:var(--green);border-color:var(--green)}
+.goal-item input:checked:after{content:"✓";position:absolute;color:#fff;font:12px Arial,sans-serif;left:3px;top:-1px}
+.goal-item label{cursor:pointer}
+.goal-item.done label{color:#8a938b;text-decoration:line-through;text-decoration-color:#b8c0b8}
+.progress-row{display:flex;align-items:center;gap:12px;margin:0 0 16px;font:12px Arial,sans-serif;color:var(--muted)}
+.progress{height:6px;background:#e9ece6;border-radius:10px;overflow:hidden;flex:1}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,var(--green2),var(--gold));width:0;transition:width .25s}
+.small-btn{background:#f3f2ec;border:1px solid var(--line);color:#566258;border-radius:4px;padding:5px 9px;font:11px Arial,sans-serif;cursor:pointer}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.search{flex:1;min-width:180px;padding:10px 12px;border:1px solid var(--line);border-radius:4px;background:#fffefa;color:var(--ink)}
+.note-area{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.note-area label{display:block;font-size:14px;color:var(--green);font-weight:600;margin-bottom:8px}
+textarea{width:100%;min-height:100px;resize:vertical;padding:12px;border:1px solid var(--line);border-radius:4px;background:#fffefa;color:var(--ink)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.info-card{border:1px solid var(--line);padding:17px;border-radius:4px;background:#fbfaf6}
+.info-card h3{font-size:16px;color:var(--green);margin:0 0 7px}
+.info-card p{font-size:14px;color:var(--muted);margin:0}
+.principle{background:#f1f3ed;border-left:3px solid var(--gold);padding:17px 20px;color:#425047;margin-top:20px}
+.footer{background:#102e27;color:#dce5df;padding:30px 22px;text-align:center}
+.footer strong{color:var(--gold-light);font-weight:500}
+.footer p{font-size:12px;color:#aebeb4;margin:5px}
+.empty{display:none;padding:16px;color:var(--muted);font-size:14px}
+@media(max-width:850px){
+ .layout{grid-template-columns:1fr}.sidebar{position:relative;top:auto}.side-links{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+ .stats{grid-template-columns:repeat(2,1fr)}.navlinks{display:none}.menu-btn{display:block}
+ .navlinks.open{display:flex;position:absolute;top:53px;left:0;right:0;background:var(--green);padding:14px 22px;flex-direction:column;align-items:flex-start}
+}
+@media(max-width:560px){
+ .hero-inner{padding:58px 20px 58px}.hero p{font-size:15px}
+ .section-head{padding:19px 18px 14px}.section-body{padding:18px}
+ .stats{gap:9px}.stat{padding:13px}.stat strong{font-size:21px}
+ .side-links{grid-template-columns:1fr}.two-col{grid-template-columns:1fr}
+ h2{font-size:22px}
+}
+@media print{
+ .topbar,.hero-actions,.sidebar,.tools,.small-btn,.note-area{display:none!important}
+ body{background:#fff}.hero{background:#fff;color:#123c32}.hero p{color:#333}
+ .hero-inner{padding:25px 0}.stats{margin:0;box-shadow:none}.layout{display:block;padding-top:20px}
+ .section{box-shadow:none;break-inside:avoid}.section-body{padding:14px 20px}
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <nav class="nav">
+  <a class="brand" href="#home">MY DREAM<span>,</span> MY MISSION</a>
+  <button class="menu-btn" id="menuBtn" aria-label="মেনু খুলুন">Menu</button>
+  <div class="navlinks" id="navLinks">
+   <a href="#home">Home</a><a href="#scholar">Scholar</a><a href="#author">Author</a><a href="#qari">Qari</a><a href="#vocal">Vocal Artist</a><a href="#skills">Skills</a>
+  </div>
+ </nav>
+</header>
+
+<section class="hero" id="home">
+ <div class="hero-inner">
+  <div class="eyebrow">A Personal Vision • A Lifelong Mission</div>
+  <h1>My Dream,<br><span style="color:#e8d7ad">My Mission.</span></h1>
+  <p>জ্ঞান, গবেষণা, সাহিত্য, কুরআন তিলাওয়াত ও সৃজনশীলতার পথে আমার স্বপ্ন, লক্ষ্য এবং অর্জন করতে চাওয়া যোগ্যতাসমূহের ব্যক্তিগত নকশা।</p>
+  <div class="hero-actions">
+   <a class="btn" href="#vision">আমার লক্ষ্যগুলো দেখুন</a>
+   <button class="btn outline" onclick="window.print()">Print / Save PDF</button>
+  </div>
+ </div>
+</section>
+
+<main class="wrap" id="vision">
+ <div class="stats">
+  <div class="stat"><strong>৭</strong><span>মূল লক্ষ্যক্ষেত্র</span></div>
+  <div class="stat"><strong id="totalGoals">০</strong><span>মোট দক্ষতা ও লক্ষ্য</span></div>
+  <div class="stat"><strong id="doneGoals">০</strong><span>চিহ্নিত সম্পন্ন</span></div>
+  <div class="stat"><strong id="overallPercent">০%</strong><span>ব্যক্তিগত অগ্রগতি</span></div>
+ </div>
+
+ <div class="layout">
+  <aside class="sidebar">
+   <p class="side-title">Contents</p>
+   <div class="side-links">
+    <a class="side-link active" href="#scholar">01 · ইসলামী আলেম ও গবেষক</a>
+    <a class="side-link" href="#author">02 · লেখক ও সাহিত্যিক</a>
+    <a class="side-link" href="#qari">03 · হাফেজ ও ক্বারি</a>
+    <a class="side-link" href="#vocal">04 · কণ্ঠশিল্পী ও সুরস্রষ্টা</a>
+    <a class="side-link" href="#teacher">05 · শিক্ষক ও বক্তা</a>
+    <a class="side-link" href="#knowledge">06 · ভাষা, জ্ঞান ও প্রযুক্তি</a>
+    <a class="side-link" href="#final">07 · চূড়ান্ত স্বপ্ন</a>
+   </div>
+   <div class="side-note">এই ওয়েবসাইটটি ব্যক্তিগত লক্ষ্য ও অগ্রগতি সাজিয়ে রাখার জন্য। টিকচিহ্ন ও নোট এই ব্রাউজারেই সংরক্ষিত হবে।</div>
+  </aside>
+
+  <div class="content">
+   <div class="tools">
+    <input class="search" id="searchBox" type="search" placeholder="লক্ষ্য বা দক্ষতা খুঁজুন…">
+    <button class="small-btn" id="resetBtn">অগ্রগতি রিসেট</button>
+   </div>
+
+   <section class="section goal-section" id="scholar" data-title="ইসলামী আলেম গবেষক">
+    <div class="section-head"><div><div class="section-kicker">01 / Scholarship</div><h2>একজন আন্তর্জাতিক মানের ইসলামী আলেম ও গবেষক</h2></div></div>
+    <div class="section-body">
+     <p class="intro">কুরআন, হাদিস, তাফসির, ফিকহ, উসুলুল ফিকহ, আকিদা ও ইসলামের অন্যান্য শাস্ত্রে গভীর, নির্ভরযোগ্য ও প্রমাণভিত্তিক জ্ঞান অর্জন করতে চাই।</p>
+     <div class="progress-row"><span>এই বিভাগের অগ্রগতি</span><div class="progress"><span></span></div><b>0%</b></div>
+     <ul class="goal-list">
+      <li class="goal-item"><input type="checkbox" id="s1"><label for="s1">কুরআন ও সুন্নাহ সম্পর্কে গভীর ও নির্ভরযোগ্য জ্ঞান অর্জন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="s2"><label for="s2">তাফসির, উলুমুল কুরআন, উলুমুল হাদিস ও হাদিসশাস্ত্রে বিশেষজ্ঞ হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="s3"><label for="s3">ফিকহ, উসুলুল ফিকহ, ফতোয়া ও ইজতিহাদের নীতিমালা সম্পর্কে উচ্চতর জ্ঞান অর্জন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="s4"><label for="s4">আরবি ভাষা, নাহু, সরফ, বালাগাত ও আরবি সাহিত্যে দক্ষ হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="s5"><label for="s5">ইসলামের ইতিহাস, মুসলিম সভ্যতা ও মনীষীদের সম্পর্কে গবেষণামূলক জ্ঞান অর্জন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="s6"><label for="s6">তুলনামূলক ধর্মতত্ত্ব, দর্শন, যুক্তিবিদ্যা ও সমসাময়িক মতবাদ সম্পর্কে অধ্যয়ন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="s7"><label for="s7">দলিল, প্রমাণ ও নির্ভরযোগ্য সূত্রের ভিত্তিতে গবেষণা ও বিশ্লেষণ করতে পারা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="s8"><label for="s8">জটিল ইসলামী বিষয় সহজ ও প্রাঞ্জল ভাষায় মানুষের সামনে উপস্থাপন করতে পারা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="s9"><label for="s9">যোগ্য মুফতি ও ফকিহ হওয়ার জন্য প্রয়োজনীয় প্রাতিষ্ঠানিক শিক্ষা ও বিশেষায়িত প্রশিক্ষণ অর্জন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="s10"><label for="s10">আন্তর্জাতিক পর্যায়ে ইসলামী জ্ঞান, শিক্ষা ও গবেষণায় অবদান রাখা।</label></li>
+     </ul>
+     <div class="note-area"><label for="note-scholar">আমার নোট ও পরবর্তী পদক্ষেপ</label><textarea id="note-scholar" placeholder="এখানে পড়াশোনা, বই, শিক্ষক বা পরবর্তী পদক্ষেপ লিখুন…"></textarea></div>
+    </div>
+   </section>
+
+   <section class="section goal-section" id="author" data-title="লেখক গবেষণাধর্মী সাহিত্যিক">
+    <div class="section-head"><div><div class="section-kicker">02 / Writing & Research</div><h2>একজন আন্তর্জাতিক মানের ইসলামী লেখক ও গবেষণাধর্মী সাহিত্যিক</h2></div></div>
+    <div class="section-body">
+     <p class="intro">ইসলামী জ্ঞান, ইতিহাস, দর্শন, সমাজ, সভ্যতা, নৈতিকতা ও সমসাময়িক বিষয় নিয়ে উচ্চমানের গবেষণাধর্মী ও সাহিত্যিক বই লিখতে চাই।</p>
+     <div class="progress-row"><span>এই বিভাগের অগ্রগতি</span><div class="progress"><span></span></div><b>0%</b></div>
+     <ul class="goal-list">
+      <li class="goal-item"><input type="checkbox" id="a1"><label for="a1">বাংলা, আরবি ও ইংরেজি ভাষায় উচ্চমানের লেখালেখির দক্ষতা অর্জন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="a2"><label for="a2">প্রয়োজন অনুযায়ী উর্দু, ফারসি ও অন্যান্য ভাষা শেখা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="a3"><label for="a3">গবেষণাপদ্ধতি, তথ্য যাচাই, সূত্র অনুসন্ধান ও রেফারেন্স ব্যবহারে দক্ষ হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="a4"><label for="a4">ইসলামী গবেষণা, ইতিহাস, দর্শন, ধর্মতত্ত্ব ও সমাজবিষয়ক গবেষণায় পারদর্শী হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="a5"><label for="a5">প্রবন্ধ, গবেষণাপত্র, প্রবন্ধসংকলন, জীবনী, ইতিহাস ও নন-ফিকশন বই লিখতে পারা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="a6"><label for="a6">যুক্তিনির্ভর, তথ্যসমৃদ্ধ ও বিশ্লেষণধর্মী লেখা তৈরি করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="a7"><label for="a7">গল্প, সংলাপ, উদাহরণ ও সাহিত্যিক উপস্থাপনার মাধ্যমে কঠিন বিষয় সহজ করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="a8"><label for="a8">অনুবাদ, সম্পাদনা, প্রুফরিডিং ও প্রকাশনাসংক্রান্ত কাজে দক্ষ হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="a9"><label for="a9">আন্তর্জাতিক মানের গবেষণাপত্র ও বই প্রকাশের যোগ্যতা অর্জন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="a10"><label for="a10">পাঠকের জ্ঞান, চিন্তাশক্তি ও নৈতিক উন্নয়নে ভূমিকা রাখে—এমন বই লেখা।</label></li>
+     </ul>
+     <div class="note-area"><label for="note-author">আমার নোট ও পরবর্তী পদক্ষেপ</label><textarea id="note-author" placeholder="বইয়ের ধারণা, গবেষণার বিষয় বা লেখার পরিকল্পনা…"></textarea></div>
+    </div>
+   </section>
+
+   <section class="section goal-section" id="qari" data-title="হাফেজ ক্বারি">
+    <div class="section-head"><div><div class="section-kicker">03 / Quran Recitation</div><h2>একজন আন্তর্জাতিক মানের হাফেজ ও ক্বারি</h2></div></div>
+    <div class="section-body">
+     <p class="intro">সম্পূর্ণ কুরআনের হাফেজ হয়ে তাজবিদ, মাখরাজ, সিফাত, ওয়াকফ-ইবতিদা ও স্বীকৃত কিরাআতের ক্ষেত্রে উচ্চপর্যায়ের দক্ষতা অর্জন করতে চাই।</p>
+     <div class="progress-row"><span>এই বিভাগের অগ্রগতি</span><div class="progress"><span></span></div><b>0%</b></div>
+     <ul class="goal-list">
+      <li class="goal-item"><input type="checkbox" id="q1"><label for="q1">সম্পূর্ণ কুরআনুল কারিম নির্ভুলভাবে মুখস্থ করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q2"><label for="q2">নিয়মিত পুনরাবৃত্তির মাধ্যমে হিফজকে মজবুত করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q3"><label for="q3">তাজবিদের সব নিয়ম যথাযথভাবে আয়ত্ত করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q4"><label for="q4">প্রতিটি হরফের মাখরাজ ও সিফাত শুদ্ধভাবে আদায় করতে শেখা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q5"><label for="q5">গুন্নাহ, মাদ, ইখফা, ইদগাম, ইকলাব ও ইজহারে দক্ষ হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q6"><label for="q6">ওয়াকফ ও ইবতিদার নিয়ম গভীরভাবে শেখা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q7"><label for="q7">প্রথমে হাফস আন আসিমসহ স্বীকৃত রিওয়ায়াতগুলো শুদ্ধভাবে শেখা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q8"><label for="q8">যোগ্য শিক্ষকের অধীনে অন্যান্য স্বীকৃত কিরাআত ও রিওয়ায়াত অধ্যয়ন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q9"><label for="q9">সাত ও দশ কিরাআত সম্পর্কে উচ্চতর জ্ঞান এবং যোগ্য শিক্ষকের কাছ থেকে ইজাজাহ ও সনদ লাভ।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q10"><label for="q10">মুরাত্তাল ও মুজাওয়াদ উভয় ধারায় সুন্দরভাবে তিলাওয়াত করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q11"><label for="q11">কণ্ঠের স্বাভাবিক সৌন্দর্য, সুরের নিয়ন্ত্রণ ও নিরাপদ শ্বাসপ্রশ্বাসের দক্ষতা অর্জন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q12"><label for="q12">মাকামাত সম্পর্কে জ্ঞান অর্জন করে তাজবিদ ও কুরআনের অর্থের মর্যাদা বজায় রেখে তিলাওয়াত করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q13"><label for="q13">ইমামতি, তারাবিহ ও দীর্ঘ কিরাআতে দক্ষ হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q14"><label for="q14">অন্যদের কুরআন শেখানো এবং তাদের তিলাওয়াত সংশোধন করার যোগ্যতা অর্জন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="q15"><label for="q15">নিজস্ব স্বতন্ত্র ও সুন্দর তিলাওয়াতের পরিচয় তৈরি করা।</label></li>
+     </ul>
+     <div class="note-area"><label for="note-qari">আমার নোট ও পরবর্তী পদক্ষেপ</label><textarea id="note-qari" placeholder="হিফজ, তাজবিদের পাঠ, শিক্ষকের পরামর্শ বা অনুশীলনের নোট…"></textarea></div>
+    </div>
+   </section>
+
+   <section class="section goal-section" id="vocal" data-title="কণ্ঠশিল্পী সুরস্রষ্টা">
+    <div class="section-head"><div><div class="section-kicker">04 / Vocal Artistry</div><h2>একজন আন্তর্জাতিক মানের বহুমুখী কণ্ঠশিল্পী ও সুরস্রষ্টা</h2></div></div>
+    <div class="section-body">
+     <p class="intro">গজল, নাশিদ, হামদ, নাত ও অন্যান্য উপযুক্ত সংগীত শুদ্ধতা, আবেগ ও দক্ষতার সঙ্গে পরিবেশন করার পাশাপাশি নিজস্ব মৌলিক সৃষ্টি তৈরি করতে চাই।</p>
+     <div class="progress-row"><span>এই বিভাগের অগ্রগতি</span><div class="progress"><span></span></div><b>0%</b></div>
+     <ul class="goal-list">
+      <li class="goal-item"><input type="checkbox" id="v1"><label for="v1">শ্রুতিমধুর, স্বতন্ত্র, নমনীয় ও বহুমুখী কণ্ঠস্বরের অধিকারী হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v2"><label for="v2">Pitch Control, Voice Control, Breath Control, Vocal Flexibility ও Vocal Expression-এ দক্ষ হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v3"><label for="v3">কণ্ঠের গভীরতা, কোমলতা, শক্তি, উচ্চতা ও আবেগ নিয়ন্ত্রণ করতে পারা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v4"><label for="v4">বিভিন্ন ধরনের গজল, নাশিদ, হামদ ও নাত পরিবেশনায় পারদর্শী হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v5"><label for="v5">বিভিন্ন শিল্পীর কণ্ঠ, সুর, তাল, লয় ও পরিবেশনাশৈলী শুনে বিশ্লেষণ করতে পারা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v6"><label for="v6">অন্যের পরিবেশনা শুনে তার সুর ও কণ্ঠের বৈশিষ্ট্য শিখে নিজের কণ্ঠে পুনরায় পরিবেশন করতে পারা—প্রয়োজনীয় অনুমতি ও স্বত্বের প্রতি সম্মান রেখে।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v7"><label for="v7">সুর, স্কেল, রাগ, মাকামাত ও মেলোডি সম্পর্কে গভীর জ্ঞান অর্জন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v8"><label for="v8">বাংলা, আরবি, উর্দু, ফারসি ও ইংরেজিসহ বিভিন্ন ভাষায় শুদ্ধ উচ্চারণে পরিবেশন করতে পারা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v9"><label for="v9">নিজেই গজল ও নাশিদের কথা লিখতে পারা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v10"><label for="v10">নিজস্ব সুর, মেলোডি ও কম্পোজিশন তৈরি করতে পারা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v11"><label for="v11">Vocal Layering, Harmony ও একাধিক কণ্ঠের সমন্বয়ে সুন্দর পরিবেশনা তৈরি করতে পারা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v12"><label for="v12">Microphone Technique, Vocal Recording, Audio Editing, Mixing ও Mastering শেখা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v13"><label for="v13">Digital Audio Workstation (DAW) ব্যবহার করে নিজস্ব অডিও প্রযোজনা করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v14"><label for="v14">সম্পূর্ণ মৌলিক গজল ও নাশিদ তৈরি ও প্রকাশ করতে পারা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v15"><label for="v15">নিজের স্বতন্ত্র কণ্ঠ, সুর ও পরিবেশনাশৈলী প্রতিষ্ঠা করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="v16"><label for="v16">আন্তর্জাতিক পর্যায়ে পরিচিত ও সম্মানিত কণ্ঠশিল্পী ও সুরস্রষ্টা হওয়া।</label></li>
+     </ul>
+     <div class="note-area"><label for="note-vocal">আমার নোট ও পরবর্তী পদক্ষেপ</label><textarea id="note-vocal" placeholder="কণ্ঠচর্চা, গান/নাশিদের ধারণা, প্রশিক্ষণ বা রেকর্ডিংয়ের পরিকল্পনা…"></textarea></div>
+    </div>
+   </section>
+
+   <section class="section goal-section" id="teacher" data-title="শিক্ষক বক্তা জ্ঞান প্রচারক">
+    <div class="section-head"><div><div class="section-kicker">05 / Teaching & Leadership</div><h2>একজন দক্ষ শিক্ষক, বক্তা ও জ্ঞান প্রচারক</h2></div></div>
+    <div class="section-body">
+     <p class="intro">নিজের অর্জিত জ্ঞান ও দক্ষতা অন্যদের মধ্যে ছড়িয়ে দিতে এবং শিক্ষার মাধ্যমে মানুষের কল্যাণে অবদান রাখতে চাই।</p>
+     <div class="progress-row"><span>এই বিভাগের অগ্রগতি</span><div class="progress"><span></span></div><b>0%</b></div>
+     <ul class="goal-list">
+      <li class="goal-item"><input type="checkbox" id="t1"><label for="t1">জটিল বিষয় সহজভাবে বোঝানোর দক্ষতা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="t2"><label for="t2">সুন্দর, প্রাঞ্জল ও প্রভাবশালী বক্তব্য উপস্থাপন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="t3"><label for="t3">আন্তর্জাতিক পর্যায়ে বক্তৃতা ও আলোচনা করার যোগ্যতা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="t4"><label for="t4">শিক্ষার্থীদের উপযোগী পাঠদান ও প্রশিক্ষণপদ্ধতি তৈরি।</label></li>
+      <li class="goal-item"><input type="checkbox" id="t5"><label for="t5">কুরআন, হাদিস, আরবি ভাষা ও ইসলামী জ্ঞান শেখানোর দক্ষতা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="t6"><label for="t6">লেখালেখি, গবেষণা ও জ্ঞানচর্চায় অন্যদের উৎসাহিত করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="t7"><label for="t7">ভবিষ্যতে একটি মানসম্মত শিক্ষাপ্রতিষ্ঠান বা গবেষণাকেন্দ্র প্রতিষ্ঠার যোগ্যতা অর্জন।</label></li>
+     </ul>
+     <div class="note-area"><label for="note-teacher">আমার নোট ও পরবর্তী পদক্ষেপ</label><textarea id="note-teacher" placeholder="শিক্ষকতা, বক্তৃতা, নেতৃত্ব বা প্রতিষ্ঠান গঠনের ভাবনা…"></textarea></div>
+    </div>
+   </section>
+
+   <section class="section goal-section" id="knowledge" data-title="ভাষা জ্ঞান প্রযুক্তি">
+    <div class="section-head"><div><div class="section-kicker">06 / Languages & Knowledge</div><h2>ভাষা, জ্ঞান ও প্রযুক্তিতে বহুমুখী দক্ষতা</h2></div></div>
+    <div class="section-body">
+     <p class="intro">নির্দিষ্ট কয়েকটি বিষয়ে সীমাবদ্ধ না থেকে প্রয়োজনীয় ভাষা, মানবিক জ্ঞান, বিজ্ঞান ও প্রযুক্তিতে বিস্তৃত ভিত্তি গড়ে তুলতে চাই।</p>
+     <div class="progress-row"><span>এই বিভাগের অগ্রগতি</span><div class="progress"><span></span></div><b>0%</b></div>
+     <ul class="goal-list">
+      <li class="goal-item"><input type="checkbox" id="k1"><label for="k1">বাংলা, আরবি ও ইংরেজিতে উচ্চপর্যায়ের দক্ষতা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="k2"><label for="k2">উর্দু, ফারসি ও অন্যান্য প্রয়োজনীয় ভাষা শেখা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="k3"><label for="k3">অনুবাদ ও ভাষাগত বিশ্লেষণে দক্ষতা অর্জন।</label></li>
+      <li class="goal-item"><input type="checkbox" id="k4"><label for="k4">যুক্তিবিদ্যা, দর্শন ও সমালোচনামূলক চিন্তায় দক্ষতা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="k5"><label for="k5">কম্পিউটার, ডিজিটাল গবেষণা ও তথ্য ব্যবস্থাপনায় দক্ষতা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="k6"><label for="k6">লেখালেখি, প্রকাশনা, অডিও-ভিডিও নির্মাণ ও ডিজিটাল প্রোডাকশনের প্রযুক্তিগত জ্ঞান।</label></li>
+      <li class="goal-item"><input type="checkbox" id="k7"><label for="k7">সময় ব্যবস্থাপনা, শৃঙ্খলা, নেতৃত্ব ও পরিকল্পনার দক্ষতা।</label></li>
+     </ul>
+     <div class="two-col" style="margin-top:20px">
+      <div class="info-card"><h3>সাধারণ শিক্ষার ভিত্তি</h3><p>গণিত, পদার্থবিজ্ঞান, রসায়ন, জীববিজ্ঞান, ইতিহাস, ভূগোল, অর্থনীতি ও মনোবিজ্ঞানের মৌলিক জ্ঞান।</p></div>
+      <div class="info-card"><h3>গবেষণা ও চিন্তাশক্তি</h3><p>Critical Thinking, Analytical Thinking, Logic, তথ্য যাচাই, গবেষণাপদ্ধতি ও একাডেমিক রেফারেন্স।</p></div>
+      <div class="info-card"><h3>শেখার কৌশল</h3><p>Active Recall, Spaced Repetition, Note Taking, Mind Mapping ও নিয়মিত আত্মমূল্যায়ন।</p></div>
+      <div class="info-card"><h3>স্বাস্থ্য ও ব্যক্তিত্ব</h3><p>সুষম খাদ্য, পর্যাপ্ত ঘুম, কণ্ঠের যত্ন, ধৈর্য, বিনয়, নৈতিকতা ও আবেগ নিয়ন্ত্রণ।</p></div>
+     </div>
+     <div class="note-area"><label for="note-knowledge">আমার নোট ও পরবর্তী পদক্ষেপ</label><textarea id="note-knowledge" placeholder="যে বিষয়গুলো এখন শিখছি বা পরবর্তী সময়ে শিখব…"></textarea></div>
+    </div>
+   </section>
+
+   <section class="section goal-section" id="final" data-title="চূড়ান্ত পরিচয় স্বপ্ন">
+    <div class="section-head"><div><div class="section-kicker">07 / My Purpose</div><h2>আমার চূড়ান্ত পরিচয় ও স্বপ্ন</h2></div></div>
+    <div class="section-body">
+     <p class="intro">আমার চূড়ান্ত লক্ষ্য হলো এমন একজন বহুমুখী জ্ঞানী, গবেষক, লেখক, হাফেজ, ক্বারি, শিক্ষক, বক্তা, কণ্ঠশিল্পী ও সুরস্রষ্টা হয়ে ওঠা, যিনি প্রতিটি ক্ষেত্রে প্রকৃত জ্ঞান, যোগ্যতা, দক্ষতা ও স্বকীয়তার পরিচয় দিতে পারবেন।</p>
+     <ul class="goal-list">
+      <li class="goal-item"><input type="checkbox" id="f1"><label for="f1">ইসলামী জ্ঞানে গভীরতা ও গবেষণায় নির্ভরযোগ্যতা অর্জন করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="f2"><label for="f2">সাহিত্য ও লেখালেখিতে নিজস্ব শক্তিশালী পরিচয় তৈরি করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="f3"><label for="f3">কুরআন তিলাওয়াতে উচ্চপর্যায়ের দক্ষতা ও স্বীকৃত সনদ অর্জন করা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="f4"><label for="f4">গজল ও নাশিদে অসাধারণ কণ্ঠশিল্পী ও সুরস্রষ্টা হওয়া।</label></li>
+      <li class="goal-item"><input type="checkbox" id="f5"><label for="f5">নিজের জ্ঞান ও প্রতিভা মানুষের কল্যাণে কাজে লাগানো।</label></li>
+      <li class="goal-item"><input type="checkbox" id="f6"><label for="f6">আন্তর্জাতিক পর্যায়ে শিক্ষা, গবেষণা, সাহিত্য ও শিল্পের মাধ্যমে অবদান রাখা।</label></li>
+      <li class="goal-item"><input type="checkbox" id="f7"><label for="f7">প্রতিটি ক্ষেত্রে মৌলিকতা, সততা, শৃঙ্খলা ও উৎকর্ষ বজায় রাখা।</label></li>
+     </ul>
+     <div class="principle"><strong>আমার মূলনীতি</strong><br>আমি কারও অন্ধ অনুকরণ করতে চাই না। যোগ্য ব্যক্তিদের কাছ থেকে ভালো দিকগুলো শিখব, প্রাতিষ্ঠানিক শিক্ষা ও প্রশিক্ষণ গ্রহণ করব, নিজের জ্ঞান ও দক্ষতা উন্নত করব এবং প্রতিটি ক্ষেত্রে নিজস্ব পরিচয় তৈরি করব।<br><br><strong>আমার সর্বোচ্চ উদ্দেশ্য</strong><br>আল্লাহর সন্তুষ্টি অর্জন করা, উপকারী জ্ঞান অর্জন করা এবং নিজের সামর্থ্যকে মানুষের কল্যাণে ব্যবহার করা।</div>
+     <div class="note-area"><label for="note-final">নিজের অঙ্গীকার ও ব্যক্তিগত নোট</label><textarea id="note-final" placeholder="আজ থেকে আমার অঙ্গীকার…"></textarea></div>
+    </div>
+   </section>
+  </div>
+ </div>
+</main>
+<footer class="footer">
+ <strong>MY DREAM, MY MISSION</strong>
+ <p>একটি স্বপ্ন। একটি জীবনব্যাপী সাধনা। জ্ঞান, শুদ্ধতা ও কল্যাণের পথে।</p>
+ <p>ব্যক্তিগত লক্ষ্য-পরিকল্পনা · নিজের অগ্রগতি নিজেই নির্ধারণ করো</p>
+</footer>
+<script>
+const checks=[...document.querySelectorAll('.goal-item input[type="checkbox"]')];
+const notes=[...document.querySelectorAll('textarea')];
+function saveState(){
+ checks.forEach(c=>{localStorage.setItem('mdmm-'+c.id,c.checked?'1':'0');c.closest('.goal-item').classList.toggle('done',c.checked)});
+ notes.forEach(n=>localStorage.setItem('mdmm-'+n.id,n.value));
+ updateProgress();
+}
+function updateProgress(){
+ const done=checks.filter(c=>c.checked).length,total=checks.length;
+ document.getElementById('totalGoals').textContent=total;
+ document.getElementById('doneGoals').textContent=done;
+ document.getElementById('overallPercent').textContent=(total?Math.round(done/total*100):0)+'%';
+ document.querySelectorAll('.goal-section').forEach(section=>{
+  const items=[...section.querySelectorAll('.goal-item input')],count=items.filter(x=>x.checked).length;
+  const pct=items.length?Math.round(count/items.length*100):0;
+  section.querySelector('.progress span').style.width=pct+'%';
+  section.querySelector('.progress-row b').textContent=pct+'%';
+ });
+}
+checks.forEach(c=>{
+ c.checked=localStorage.getItem('mdmm-'+c.id)==='1';
+ c.addEventListener('change',saveState);
+});
+notes.forEach(n=>{
+ n.value=localStorage.getItem('mdmm-'+n.id)||'';
+ n.addEventListener('input',()=>localStorage.setItem('mdmm-'+n.id,n.value));
+});
+saveState();
+document.getElementById('resetBtn').addEventListener('click',()=>{
+ if(confirm('সব লক্ষ্য-চিহ্ন ও ব্যক্তিগত নোট মুছে রিসেট করবেন?')){
+  [...checks,...notes].forEach(el=>localStorage.removeItem('mdmm-'+el.id));
+  checks.forEach(c=>c.checked=false);notes.forEach(n=>n.value='');saveState();
+ }
+});
+document.getElementById('searchBox').addEventListener('input',e=>{
+ const q=e.target.value.trim().toLocaleLowerCase();
+ document.querySelectorAll('.goal-item').forEach(item=>{
+  item.style.display=item.textContent.toLocaleLowerCase().includes(q)?'grid':'none';
+ });
+ document.querySelectorAll('.goal-section').forEach(section=>{
+  const visible=[...section.querySelectorAll('.goal-item')].some(i=>i.style.display!=='none');
+  section.style.display=(!q||visible)?'block':'none';
+ });
+});
+document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('navLinks').classList.toggle('open'));
+document.querySelectorAll('.side-link').forEach(a=>a.addEventListener('click',()=>{
+ document.querySelectorAll('.side-link').forEach(x=>x.classList.remove('active'));a.classList.add('active');
+}));
+</script>
+</body>
+</html>
